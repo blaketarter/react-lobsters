@@ -29068,31 +29068,15 @@ var _reactDom = require('react-dom');
 
 var _reactDom2 = _interopRequireDefault(_reactDom);
 
-var _axios = require('axios');
-
-var _axios2 = _interopRequireDefault(_axios);
-
-var _moment = require('moment');
-
-var _moment2 = _interopRequireDefault(_moment);
-
-var _immutable = require('immutable');
-
-var Immutable = _interopRequireWildcard(_immutable);
-
-var _reactImmutableRenderMixin = require('react-immutable-render-mixin');
-
 var _lobstersApp = require('./components/lobstersApp');
 
 var _lobstersApp2 = _interopRequireDefault(_lobstersApp);
-
-function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj.default = obj; return newObj; } }
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 _reactDom2.default.render(_react2.default.createElement(_lobstersApp2.default, { postsUrl: 'http://lobste.rs/hottest.json' }), document.getElementById('root'));
 
-},{"./components/lobstersApp":183,"axios":2,"immutable":46,"moment":47,"react":182,"react-dom":48,"react-immutable-render-mixin":51}],188:[function(require,module,exports){
+},{"./components/lobstersApp":183,"react":182,"react-dom":48}],188:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
