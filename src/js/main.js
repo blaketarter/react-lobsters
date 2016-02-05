@@ -2,34 +2,11 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import axios from 'axios';
 import moment from 'moment';
+import * as Immutable from 'immutable';
+import { immutableRenderDecorator } from 'react-immutable-render-mixin';
 
-class PostModel {
-  constructor(options) {
-    this.title = options.title;
-    this.url = options.url;
-    this.tags = options.tags;
-    this.score = options.score;
-    this.author = options.submitter_user.username;
-    this.created = moment(options.created_at).fromNow();
-    this.commentCount = options.comment_count;
-    this.commentsUrl = options.comments_url;
-    this.description = options.description;
-    this.shortId = options.short_id;
-    this.shortIdUrl = options.short_id_url;
-  }
-}
-
-class CommentModel {
-  constructor(options) {
-    this.indentLevel = options.indent_level;
-    this.score = options.score;
-    this.author = options.commenting_user.username;
-    this.created = moment(options.created_at).fromNow();
-    this.comment = options.comment;
-    this.collapsed = false;
-    this.commentCollapsed = false;
-  }
-}
+import createPost from './models/post';
+import createComment from './models/comment';
 
 class LobstersApp extends React.Component {  
   render() {
@@ -39,19 +16,20 @@ class LobstersApp extends React.Component {
   }
 };
 
+@immutableRenderDecorator
 class PostListWrapper extends React.Component {
   constructor(props) {
     super(props);
 
     this.state = {
-      posts: []
+      posts: Immutable.List()
     };
 
     axios
     .get(this.props.postsUrl)
     .then((res) => {
       this.setState({
-        posts: res.data.map((raw) => new PostModel(raw))
+        posts: Immutable.List(res.data.map((raw) => createPost(raw)))
       });
     })
     .catch((err) => {
@@ -69,6 +47,8 @@ class PostListWrapper extends React.Component {
 class PostList extends React.Component {
   render() {
     const postNodes = this.props.posts.map(function(post) {
+      post = post.toJS();
+
       return (
         <Post { ...post } key={post.shortId} />
       );
