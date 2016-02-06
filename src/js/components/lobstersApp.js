@@ -1,13 +1,13 @@
 import React from 'react';
-import PostListWrapper from './postListWrapper';
 import NavBar from './navBar';
+import SwipeableTabView from './swipableTabView';
 
 export default class LobstersApp extends React.Component {  
   render() {
     return (
       <div>
         <NavBar title={ this.props.title } color={ this.props.color } />
-        <PostListWrapper postsUrl={ this.props.postsUrl } />
+        <SwipeableTabView tabs={ this.props.tabs } />
       </div>
     );
   }

@@ -6,10 +6,10 @@ export default class NavBar extends React.Component {
     return (
       <div>
         <AppBar
-          style={{position: 'fixed', backgroundColor: this.props.color}}
+          style={{position: 'fixed', backgroundColor: this.props.color, boxShadow: 'none'}}
           title={ this.props.title }
         />
-        <div style={{height: '64px'}}></div>
+        <div style={{height: '112px'}}></div>
       </div>
     );
   }
